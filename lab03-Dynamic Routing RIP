@@ -1,0 +1,97 @@
+# Dynamic Routing using RIP – Cisco Packet Tracer
+
+This project demonstrates **dynamic routing** using **RIP (Routing Information Protocol)** in a simulated network topology built in **Cisco Packet Tracer**.
+
+---
+
+## 🖥️ Topology Overview
+
+![Topology](Dynamic%20Routing%20RIP.png)
+
+The network consists of:
+- **2 Routers** (Cisco 2911)
+- **2 Switches**
+- **6 PCs**
+- **3 Networks:**
+  - `198.168.2.0/24` – Left LAN
+  - `198.168.3.0/24` – Right LAN
+  - `198.168.1.0/24` – Inter-router link
+
+---
+
+## ⚙️ Router Configuration (RIP)
+
+### Router0 (Left Side)
+```plaintext
+enable
+configure terminal
+router rip
+version 2
+no auto-summary
+network 198.168.1.0
+network 198.168.2.0
+exit
+
+
+
+
+Router1 (Right Side)
+
+enable
+configure terminal
+router rip
+version 2
+no auto-summary
+network 198.168.1.0
+network 198.168.3.0
+exit
+
+
+🧾 IP Addressing Summary
+Device	Interface	IP Address	Subnet
+Router0	Gig0/0	192.168.2.3	255.255.255.0
+Router0	Gig0/1	198.168.1.2	255.255.255.0
+Router1	Gig0/0	198.168.3.3	255.255.255.0
+Router1	Gig0/1	198.168.1.4	255.255.255.0
+PC0	Fa0	198.168.2.7	255.255.255.0
+PC1	Fa0	198.168.2.9	255.255.255.0
+PC2	Fa0	198.168.3.5	255.255.255.0
+PC3	Fa0	198.168.3.7	255.255.255.0
+
+🛠️ Default Gateway Settings (PCs)
+Set the default gateway on each PC to the IP address of the connected router interface:
+
+PC0 & PC1: 192.168.2.3
+
+PC2 & PC3: 198.168.3.3
+
+✅ Verification Commands
+
+On routers:
+show ip route
+show ip protocols
+ping [destination-ip]
+
+On PCs:
+ping [remote-pc-ip]
+📂 Files Included
+Dynamic Routing RIP.pkt – Packet Tracer file (if applicable)
+
+Dynamic Routing RIP.png – Network topology image
+
+README.md – This documentation
+
+📚 Learning Objectives
+Understand and configure RIP version 2
+
+Learn about classless routing, no auto-summary, and dynamic route advertisement
+
+Test and verify end-to-end network connectivity
+
+📢 Notes
+Make sure all router interfaces are enabled using no shutdown.
+
+This setup uses class C private IPs with a /24 subnet.
+
+RIP is simple but not scalable; this demo is ideal for learning purposes.
+;    
