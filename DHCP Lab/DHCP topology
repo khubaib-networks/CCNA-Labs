@@ -1,1 +1,48 @@
+# CCNA Labs
+
+Welcome to the **CCNA Labs** repository! This collection of hands-on labs is designed to help networking students, enthusiasts, and professionals practice and understand key networking concepts using Cisco Packet Tracer.
+
+---
+
+## 📚 InterVLAN Routing Lab
+
+This lab demonstrates **InterVLAN Routing** using **Router-on-a-Stick** configuration in Cisco Packet Tracer.
+
+### 🏗️ Topology Overview
+
+![InterVLAN Topology](InterVLAN-topology.png)
+
+### 🖥️ Devices Used
+
+- **Router** (DHCP-Server)
+- **Switches** (Layer 2)
+- **End Devices** (PCs)
+- VLANs configured across switches
+
+---
+
+### 🌐 VLANs and DHCP Configuration
+
+| VLAN   | Subnet           | Default Gateway  | DHCP Pool          |
+|--------|------------------|------------------|--------------------|
+| VLAN 10 | 192.168.1.0/24  | 192.168.1.1      | 192.168.1.0/24     |
+| VLAN 20 | 192.168.2.0/24  | 192.168.2.1      | 192.168.2.0/24     |
+
+#### DHCP Configuration on Router
+
+```bash
+hostname dhcp-server
+!
+ip dhcp excluded-address 192.168.1.1
+ip dhcp excluded-address 192.168.2.1
+!
+ip dhcp pool 192.168.1.1
+ network 192.168.1.0 255.255.255.0
+ default-router 192.168.1.1
+ dns-server 8.8.8.8
+!
+ip dhcp pool 192.168.2.1
+ network 192.168.2.0 255.255.255.0
+ default-router 192.168.2.1
+ dns-server 8.8.8.8
 
