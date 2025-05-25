@@ -5,6 +5,7 @@ This lab is designed to help beginners understand the fundamental structure of a
 ## 🧱 Topology Components
 - 2 x End Devices (PC0, PC1)
 - 1 x Switch (2960)
+- 1 x Roter (2911)
 - 2 x Copper Straight-through Cables
 
 ## 🧠 Learning Objectives
@@ -25,3 +26,22 @@ This lab is designed to help beginners understand the fundamental structure of a
 ## 📷 Screenshot
 
 ![lab01](https://github.com/user-attachments/assets/6120c077-bbee-46d7-9482-67f48cf49971)
+
+## Configuration
+-Router
+
+enbale
+conf t
+interface gigabitEthernet 0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+exit
+
+-PC0 & PC1 
+simple assign ip through IP CONFIG
+
+for testing:
+open any PC command prompt and write command
+-ping (ip of other pc)
+
+
